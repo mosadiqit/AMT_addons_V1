@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_project_team_custom_manager,access.project.team.custom.manager,model_project_team_custom,project.group_project_manager,1,1,1,1
+access_project_team_custom_nogroup,access.project.team.custom.nogroup,model_project_team_custom,,1,0,0,0
+access_costsheet_tag_manager,access.costsheet_tag.manager,model_costsheet_tag,project.group_project_manager,1,1,1,1
+access_costsheet_tag_custom_nogroup,access.costsheet_tag.nogroup,model_costsheet_tag,,1,0,0,0

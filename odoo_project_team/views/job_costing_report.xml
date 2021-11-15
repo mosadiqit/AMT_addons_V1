@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+    <template id="report_job_costing_add_project_team" inherit_id="odoo_job_costing_management.report_job_costing">
+        <xpath expr="//div/div[1]/table/tbody/tr[2]" position="after">
+            <tr>
+                <td>
+                    <strong>Project Team</strong>
+                </td>
+                <td>
+                   <span t-field="doc.project_team_id"/>
+                </td>
+                <td>
+                    <strong>Tags</strong>
+                </td>
+                <td>
+                    <t t-foreach="doc.tag_ids" t-as="tag">
+                        <t t-if="tag">
+                            <span t-field="tag.name"/>,
+                        </t>
+                   </t>
+                </td>
+            </tr>
+        </xpath>
+    </template>
+
+    </data>
+</odoo>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record model="ir.rule" id="timesheet_comp_rule">
+            <field name="name">Timesheet multi-company</field>
+            <field name="model_id" search="[('model','=','hr_timesheet_sheet.sheet')]" model="ir.model"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id','child_of',[user.company_id.id])]</field>
+        </record>
+        
+        <record id="odoo_timesheet_employee_rule" model="ir.rule">
+            <field ref="odoo_timesheet_sheet.model_hr_timesheet_sheet_sheet" name="model_id"/>
+            <field name="name">Employee Timehseet</field>
+            <field name="domain_force">['|', ('user_id', '=', False), ('user_id', '=', user.id)]</field>
+            <field eval="[(4,ref('base.group_user'))]" name="groups"/>
+        </record>
+        
+        <record id="odoo_timesheet_manager_rule" model="ir.rule">
+            <field ref="odoo_timesheet_sheet.model_hr_timesheet_sheet_sheet" name="model_id"/>
+            <field name="name">Timehseet Manager</field>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field eval="[(4,ref('hr_timesheet.group_timesheet_manager'))]" name="groups"/>
+        </record>
+    </data>
+</odoo>

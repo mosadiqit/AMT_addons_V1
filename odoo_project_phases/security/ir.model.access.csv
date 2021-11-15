@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_project_user_phase,project_user_phase,model_project_phase,project.group_project_user,1,1,1,0
+access_project_manager_phase,project_manager_phase,model_project_phase,project.group_project_manager,1,1,1,1
+access_project_emploee_phase,project_emploee_phase,model_project_phase,base.group_user,1,0,0,0

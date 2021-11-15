@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="1">
+	    <record model="timesheet.work.type" id="worktype_overtime">
+	        <field name="name">Overtime</field>
+	        <field name="code">OT</field>
+	    </record>
+	    <record model="timesheet.work.type" id="worktype_overnight">
+	        <field name="name">Overnight</field>
+	        <field name="code">OVRN</field>
+	    </record>
+	    <record model="timesheet.work.type" id="worktype_regular">
+	        <field name="name">Regular</field>
+	        <field name="code">RGL</field>
+	    </record>
+    </data>
+</odoo>

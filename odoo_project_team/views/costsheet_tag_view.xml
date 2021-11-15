@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="costsheet_tag_custom_form_view" model="ir.ui.view">
+            <field name="name">costsheet.tag.form</field>
+            <field name="model">costsheet.tag</field>
+            <field name="arch" type="xml">
+                <form string='Costsheet Tag'>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="costsheet_tag_custom_tree_view" model="ir.ui.view">
+            <field name="model">costsheet.tag.list</field>
+            <field name="model">costsheet.tag</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="costsheet_tag_custom_select_view" model="ir.ui.view">
+            <field name="model">costsheet.tag.select</field>
+            <field name="model">costsheet.tag</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="action_costsheet_tag_custom">
+            <field name="name">Cost Sheet Tags</field>
+            <field name="res_model">costsheet.tag</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    
+        <menuitem id="menu_costsheet_tag_custom" name="Cost Sheet Tags"  
+                  parent="odoo_job_costing_management.menu_job_cost_configuration" 
+                  action="action_costsheet_tag_custom"/>
+    </data>
+</odoo>

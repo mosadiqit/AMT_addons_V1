@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Res Company Inherit Form view-->
+    <record id="res_company_view_form_inherit" model="ir.ui.view">
+        <field name="name">res.company.inherit</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//group[last()]" position="after">
+                    <group name="timesheet_setting" string="Timesheet">
+                        <group>
+                            <field name="timesheet_range"/>
+                        </group>
+                    </group>
+                </xpath>
+            </data>
+        </field>
+    </record>
+</odoo>

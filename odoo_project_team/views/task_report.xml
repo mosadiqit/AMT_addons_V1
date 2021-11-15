@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <template id="task_report_inherit_project_team" inherit_id="odoo_job_costing_management.task_report_id">
+            <xpath expr="//t/div/div/table/tr[1]/th[1]" position="after">
+                <th>Project Team</th>
+             </xpath>
+             <xpath expr="//t/div/div/table/tr[2]/td[1]" position="after">
+                <td><span t-field="doc.project_team_id"/></td>
+             </xpath>
+        </template>
+        
+    </data>
+</openerp>

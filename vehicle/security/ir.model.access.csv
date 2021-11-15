@@ -1,0 +1,14 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+fleet_vehicle_model_access_right_user,fleet_vehicle_model_access_right,model_vehicle_model,,1,0,0,0
+fleet_vehicle_tag_access_right_user,fleet_vehicle_tag_access_right,model_vehicle_tag,,1,0,0,0
+fleet_vehicle_model_brand_access_right_user,fleet_vehicle_model_brand_access_right,model_vehicle_model_brand,,1,0,0,0
+fleet_vehicle_access_right_user,fleet_vehicle_access_right",model_vehicle,,1,1,0,0
+fleet_vehicle_model_access_right,fleet_vehicle_model_access_right,model_vehicle_model,,1,1,1,1
+fleet_vehicle_tag_access_right,fleet_vehicle_tag_access_right,model_vehicle_tag,,1,1,1,1
+fleet_vehicle_model_brand_access_right,fleet_vehicle_model_brand_access_right,model_vehicle_model_brand,,1,1,1,1
+fleet_vehicle_access_right,fleet_vehicle_access_right,model_vehicle,,1,1,1,1
+access_color,access_color,model_color,,1,1,1,1
+access_vehicle_cost,access_vehicle_cost,model_vehicle_cost,,1,1,1,1
+access_vehicle_type,access_vehicle_type,model_vehicle_type,,1,1,1,1
+access_vehicle_log_fuel,access_vehicle_log_fuel,model_vehicle_log_fuel,,1,1,1,0
+access_vehicle_odometer,access_vehicle_odometer,model_vehicle_odometer,,1,1,1,1

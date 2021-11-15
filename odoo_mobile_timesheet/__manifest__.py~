@@ -1,0 +1,140 @@
+# -*- coding: utf-8 -*-
+
+# Part of Probuse Consulting Service Pvt Ltd. See LICENSE file for full copyright and licensing details.
+
+{
+    'name': 'Mobile Timesheet Odoo',
+    'version': '1.0',
+    'price': 199.0,
+    'currency': 'EUR',
+    'license': 'Other proprietary',
+    'author' : 'Probuse Consulting Service Pvt. Ltd.',
+    'website' : 'www.probuse.com',
+    'support': 'contact@probuse.com',
+    'images': ['static/description/img1.jpeg'],
+    'live_test_url': 'https://www.youtube.com/watch?v=F8bGEIQiu5g',
+    'depends': [
+        'website',
+        'hr_timesheet',
+        'analytic',
+        'portal',
+        'project',
+        ],
+    'data': [
+        'data/work_type_data.xml',
+        'security/ir.model.access.csv',
+        'views/website_portal_templates.xml',
+        'views/project_view.xml',
+        'views/task_view.xml',
+        'views/timesheet_work_type_view.xml',
+        'views/timesheet_line_view.xml',
+     ],
+    'category': 'Human Resources',
+    'summary':  """This app allow your user to fill Timesheet in Mobile and Tablets. All types of mobile are supported (Android and IOS).""",
+    'description': """
+odoo mobile timesheet
+mobile timesheet
+android timesheet
+ios timsheet
+mobile odoo
+odoo mobile
+quick timesheet
+payroll timesheet
+timesheet payroll
+mobile
+tab timesheet
+iphone timesheet
+samsung timesheet
+Odoo Timesheet Portal User Employee
+Timesheet Portal User
+Odoo Timesheets
+Your Timesheets
+My Timesheets
+Project Timesheet
+User Timesheets
+iphone timesheet
+timsheet iphone
+Employee Timesheets
+Portal user Timesheets
+portal timesheet
+website timesheet
+enterprise user timesheet
+enterprise timesheet user
+enterprise employee timesheet
+enterprise timesheet employee
+timesheet for enterprise user
+timesheet for enterprise employee
+timesheet recording
+timesheet entry for enterprise
+timesheet entry employee enterprise
+enterprise paid users
+enterprise free users
+enterprise employee user
+enterprise user employee
+timesheet user fill
+timesheet employee fill
+enterprise timesheet encoding
+timesheet fill
+enterprise timesheet
+hr timesheet
+hr timesheet enterprise employee
+hr timesheet enterprise user
+enterprise fill timesheet activities
+timesheet activities
+timesheet lines enterprise user
+timesheet lines enterprise employee
+timesheet work enterprise user
+timesheet work user
+timesheet work employee enterprise
+portal timesheet enterprise
+portal timesheet
+website timesheet
+timesheet data
+timesheet import
+timesheet export
+odoo enterprise user
+odoo enterprise employee
+odoo external employee
+odoo external user
+external user timesheet
+worker timesheet
+This module allow you to employee(s) who are not real users of system but portal users / external user and it will allow to record timesheets.
+labour timesheet
+external employee timesheet
+external user timesheet
+Timesheet Entry from Web-My Account using Portal User as Employee
+external timesheet employee
+external timesheet user
+employee timesheet
+job order timesheet
+construction timesheet
+labour timesheet
+user timesheet
+timesheet mobile app
+mobile app
+ESS
+ess
+self service odoo
+portal
+self service
+self portal
+odoo self service employee
+employee portal
+employee job portal
+self service odoo employee
+employee details
+employee leave
+employee timesheet
+employee holidays
+self service portal
+odoo android
+odoo ios
+worktype
+worktype for timesheet
+
+     """,
+    'installable': True,
+    'application': False,
+}
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

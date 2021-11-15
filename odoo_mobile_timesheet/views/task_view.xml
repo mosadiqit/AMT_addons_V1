@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <record model="ir.ui.view" id="portal_user_task_type_edit">
+            <field name="name">project.inherited.form</field>
+            <field name="model">project.task.type</field>
+            <field name="inherit_id" ref="project.task_type_edit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='mail_template_id']" position="after">
+                    <field name="is_close"/>
+                </xpath>
+            </field>
+        </record>
+        
+    </data>
+</odoo>

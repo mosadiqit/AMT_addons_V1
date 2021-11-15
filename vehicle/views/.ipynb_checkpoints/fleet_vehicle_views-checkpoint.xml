@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id='fleet_vehicle_view_form' model='ir.ui.view'>
+        <field name="name">vehicle.form</field>
+        <field name="model">vehicle</field>
+        <field name="arch" type="xml">
+            <form string="Vehicle">
+                <sheet>
+                    <field name="image_medium" widget='image' class="oe_avatar"/>
+                    <div class="oe_title">
+                        <label for="model_id" class="oe_edit_only"/>
+                        <h1>
+                            <field name="model_id" placeholder="e.g. Model S"/>
+                        </h1>
+                        <label for="license_plate" class="oe_edit_only"/>
+                        <h2>
+                            <field name="license_plate" class="oe_inline" placeholder="e.g. PAE 326"/>
+                        </h2>
+                        <br/>
+                        <div>
+                            <label for="is_insured" />
+                             <field name="is_insured"/>
+                        </div>
+                        <h2>
+
+                            <field name="insurance_company" domain="[('is_insurance','=',True)]" attrs="{'invisible': [('is_insured', '=', False)],'required': [('is_insured', '=', True)]}" class="oe_inline" placeholder="Select Agency"/>
+                        </h2>
+
+                        <!--<label for="tag_ids" class="oe_edit_only"/>-->
+                        <!--<field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}"/>-->
+                    </div>
+                    <group  string="General Properties">
+                        <group col="4" colspan="8"  >
+                            <field name="vin_sn"/>
+                            <field name="odometer"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread" options='{"thread_level": 1}'/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id='fleet_vehicle_view_tree' model='ir.ui.view'>
+        <field name="name">vehicle.tree</field>
+        <field name="model">vehicle</field>
+        <field name="arch" type="xml">
+            <tree string="Vehicle">
+                <field name="active" invisible="1"/>
+                <field name="model_id" />
+                <field name="license_plate"/>
+                <field name="vin_sn"/>
+                <field name="is_insured"/>
+                <field name="insurance_company"/>
+<!--                <field name="log_drivers" invisible="1"/>-->
+            </tree>
+        </field>
+    </record>
+
+    <!--<record id="fleet_vehicle_view_search" model="ir.ui.view">-->
+        <!--<field name="name">vehicle.search</field>-->
+        <!--<field name="model">vehicle</field>-->
+        <!--<field name="arch" type="xml">-->
+            <!--<search string="All vehicles">-->
+                <!--<field name="name" filter_domain="['|', ('name','ilike',self), ('license_plate','ilike',self)]" string="Vehicle"/>-->
+                <!--&lt;!&ndash;<field name="log_drivers" filter_domain="[('log_drivers.driver_id.name', 'ilike', self)]" string="Drivers History"/>&ndash;&gt;-->
+                <!--<field name="driver_id"/>-->
+                <!--<field name="tag_ids"/>-->
+                <!--<field name="location"/>-->
+                <!--<separator/>-->
+                <!--<filter string="Archived" name="inactive" domain="[('active','=',False)]"/>-->
+                <!--<separator/>-->
+               <!--<group>-->
+                   <!--<filter name="groupby_model" context="{'group_by' : 'model_id'}" string="Model"/>-->
+                    <!--<filter name="groupby_make" context="{'group_by' : 'brand_id'}" string="Make"/>-->
+                <!--</group>-->
+           <!--</search>-->
+        <!--</field>-->
+    <!--</record>-->
+
+    <record id='fleet_vehicle_view_kanban' model='ir.ui.view'>
+        <field name="name">vehicle.kanban</field>
+        <field name="model">vehicle</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="model">
+                <field name="license_plate" />
+                <field name="model_id" />
+                <field name="driver_id" />
+                <field name="id" />
+                <field name="image" />
+                <field name="tag_ids" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="o_kanban_image">
+                                <img t-att-src="kanban_image('vehicle', 'image_small', record.id.raw_value)" alt="Vehicle"/>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_title">
+                                    <field name="license_plate"/> : <field name="model_id"/>
+                                </strong>
+                                <div class="o_kanban_tags_section">
+                                    <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <t t-if="record.driver_id.raw_value"><field name="driver_id"/></t>
+                                    </li>
+                                    <li>
+                                        <t t-if="record.location.raw_value"><field name="location"/></t>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="o_kanban_inline_block">
+                                <field name="activity_ids" widget="kanban_activity"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id='fleet_vehicle_action' model='ir.actions.act_window'>
+        <field name="name">Vehicles</field>
+        <field name="res_model">vehicle</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_groupby_status': 1}</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Create a new vehicle
+          </p><p>
+            Manage your fleet by keeping track of the contracts, services, odometers and fuel logs associated to each vehicle.
+          </p>
+        </field>
+    </record>
+
+       <record id="fleet_vehicle_tag_view_view_form" model="ir.ui.view">
+        <field name="name">vehicle.tag.form</field>
+        <field name="model">vehicle.tag</field>
+        <field name="arch" type="xml">
+            <form string="Vehicle Tags">
+                <group>
+                    <field name="name"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="fleet_vehicle_tag_action" model="ir.actions.act_window">
+        <field name="name">Vehicle Tags</field>
+        <field name="res_model">vehicle.tag</field>
+        <field name="view_type">form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new tag
+            </p>
+        </field>
+    </record>
+
+  <menuitem name="Vehicles" id="menu_root" sequence="115" web_icon="vehicle,static/description/icon.png"/>
+ <menuitem name="Vehicle " parent="menu_root" id="vehicles"/>
+   <menuitem action="vehicle.fleet_vehicle_action" parent="vehicles" id="fleet_vehicle_menu" />
+   <menuitem name="Configuration" parent="menu_root" id="vehicle_configuration" sequence="100"/>
+   <menuitem id="fleet_vehicle_tag_menu" parent="vehicle_configuration" action="vehicle.fleet_vehicle_tag_action" sequence="89"/>
+     <menuitem action="fleet_vehicle_model_action" parent="vehicles" id="vehicle_model_menu" sequence="11"/>
+    <!--<menuitem id="fleet_vehicle_tag_menu" parent="fleet_configuration" action="fleet_vehicle_tag_action" sequence="89"/>-->
+</odoo>

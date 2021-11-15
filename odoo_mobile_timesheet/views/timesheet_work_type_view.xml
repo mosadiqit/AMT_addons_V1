@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="timesheet_work_type_form_view" model="ir.ui.view">
+            <field name="name">timesheet.work.type.form</field>
+            <field name="model">timesheet.work.type</field>
+            <field name="arch" type="xml">
+                <form string="Timesheet Work Type">
+                    <group name="work_type">
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="code"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+        
+        <record id="timesheet_work_type_tree_view" model="ir.ui.view">
+            <field name="name">timesheet.work.type.tree</field>
+            <field name="model">timesheet.work.type</field>
+            <field name="arch" type="xml">
+                <tree string="Timesheet Work Type tree">
+                    <field name="code"/>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="act_timesheet_work_type" model="ir.actions.act_window">
+            <field name="name">Work Types</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">timesheet.work.type</field>
+            <field name="view_type">form</field>
+            <field name="view_id" eval="False"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                New Timesheet Work Type
+              </p>
+            </field>
+        </record>
+
+        <menuitem name="Work Types" id="menu_timesheet_work_type" parent="hr_timesheet.hr_timesheet_menu_configuration" action="act_timesheet_work_type"/>
+    </data>
+</odoo>

@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_timesheet_work_type_employee,access_timesheet_work_type_employee,model_timesheet_work_type,base.group_user,1,0,0,0
+access_timesheet_work_type_hr_officer,access_timesheet_work_type_hr_officer,model_timesheet_work_type,hr.group_hr_user,1,1,1,1
+access_timesheet_work_type_ts_officer,access_timesheet_work_type_ts_officer,model_timesheet_work_type,hr_timesheet.group_hr_timesheet_user,1,1,1,1

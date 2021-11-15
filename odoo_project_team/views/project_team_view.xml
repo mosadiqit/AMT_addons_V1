@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="project_team_custom_form_view" model="ir.ui.view">
+            <field name="name">project.team.custom.form</field>
+            <field name="model">project.team.custom</field>
+            <field name="arch" type="xml">
+                <form string='Project Team'>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="project_manager_id"/>
+                            </group>
+                            <group>
+                                <field name="code"/>
+                                <field name="project_engineer_id"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Team Members">
+                                <field name="team_member_ids"/>
+                            </page>
+                            <page string="Store Officer">
+                                <field name="store_officer_ids"/>
+                            </page>
+                            <page string="Security Guards">
+                                <field name="security_guard_ids"/>
+                            </page>
+                            <page string="Internal Notes">
+                                <field name="notes"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="project_team_custom_tree_view" model="ir.ui.view">
+            <field name="model">project.team.custom.list</field>
+            <field name="model">project.team.custom</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="project_manager_id"/>
+                    <field name="project_engineer_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="project_team_custom_select_view" model="ir.ui.view">
+            <field name="model">project.team.custom.select</field>
+            <field name="model">project.team.custom</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="project_manager_id"/>
+                    <field name="project_engineer_id"/>
+                    <group name="project_filter">
+                        <filter string="Project Manager" name="project_manager_id" context="{'group_by':'project_manager_id'}"/>
+                        <filter string="Project Engineer/ Supervisior" name="project_engineer_id" context="{'group_by':'project_engineer_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="action_project_team_custom">
+            <field name="name">Project Teams</field>
+            <field name="res_model">project.team.custom</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    
+        <menuitem id="menu_project_team_custom" name="Project Teams" 
+                  parent="odoo_job_costing_management.menu_job_cost_configuration" 
+                  action="action_project_team_custom"/>
+    </data>
+</odoo>

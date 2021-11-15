@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+         <!-- QWeb Reports for Hr Timesheet -->
+        <report
+            id="hr_timesheet_report"
+            model="hr_timesheet_sheet.sheet"
+            menu="True"
+            report_type="qweb-pdf"
+            string="Print Timesheet Sheets"
+            name="odoo_timesheet_sheet.hr_timesheet_report_id"
+            file="odoo_timesheet_sheet.hr_timesheet_report_id"
+         />
+        
+        <template id="hr_timesheet_report_id">
+        <t t-call="web.html_container">
+          <t t-foreach="docs" t-as="doc">
+             <t t-call="web.internal_layout">
+                <div class="page">
+                     <div>
+                         <h3>
+                             <strong><span t-field="doc.employee_id.name"/></strong> 
+                         </h3>
+                         <h4>
+                             <table class= "table" style="border: 2px solid #e1e1e1;">
+                                <tr>
+                                    <td><strong>Timesheet Period </strong></td>
+                                    <td><strong>State</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><span t-field="doc.date_from"/> to <span t-field="doc.date_to"/></td>
+                                    <td><span t-field="doc.state"/></td>
+                                </tr>
+                             </table>
+                         </h4>
+                         <h4>
+                             Timesheet Lines:
+                             <table class= "table" style="border: 2px solid #e1e1e1;">
+                                <tr>
+                                    <td><strong>Date</strong></td>
+                                    <td><strong>Project</strong></td>
+                                    <td><strong>Task</strong></td>
+                                    <td><strong>Description</strong></td>
+                                    <td><strong>Hours</strong></td>
+                                </tr>
+                                <t t-foreach="doc.timesheet_ids" t-as="time">
+                                    <tr>
+                                        <td><span t-field="time.date"/></td>
+                                        <td><span t-field="time.project_id.name"/></td>
+                                        <td><span t-field="time.task_id.name"/></td>
+                                        <td><span t-field="time.name"/></td>
+                                        <td><span t-field="time.unit_amount" t-options="{'widget': 'duration', 'digital': True, 'unit': 'hour', 'round': 'minute'}"/></td>
+                                    </tr>
+                                </t>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <strong t-esc="sum(doc.timesheet_ids.mapped('unit_amount'))" t-options="{'widget': 'duration', 'digital': True, 'unit': 'hour', 'round': 'minute'}"/>
+                                    </td>
+                                </tr>
+                             </table>
+                         </h4>
+                     </div>
+                </div>
+              </t>
+          </t>
+          </t>
+        </template>
+        
+    </data>
+</odoo>

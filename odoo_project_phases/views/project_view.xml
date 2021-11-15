@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="project_phase_button_project_view" model="ir.ui.view">
+        <field name="name">project.project.formview</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr = "//div[@name='button_box']" position="inside">
+<!--                <button class="oe_stat_button" type="object" string="Phases" name="show_inspection"  icon="fa-tasks" context="{'default_project_id': active_id}">-->
+                    <button class="oe_stat_button" type="object" string="Phases" name="action_show_phases"  icon="fa-tasks" context="{'default_project_id': active_id}">
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

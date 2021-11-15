@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+        <record model="ir.ui.view" id="job_costing_form_view_inherit_project_team">
+            <field name="name">job.costing.form.inherit.team</field>
+            <field name="model">job.costing</field>
+            <field name="inherit_id" ref="odoo_job_costing_management.job_costing_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='project_id']" position="after">
+                    <field name="project_team_id" attrs="{'readonly' : [('state','in',('approve','done','cancel'))]}"/>
+                    <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}" placeholder="Tags..." attrs="{'readonly' : [('state','in',('approve','done','cancel'))]}"/>
+                </xpath>
+            </field>
+        </record>
+        
+    </data>
+</odoo>

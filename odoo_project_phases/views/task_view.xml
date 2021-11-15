@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="custom_fied_phase_form_view" model="ir.ui.view">
+            <field name="name">project.task.form</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <xpath expr = "//field[@name='project_id']" position="after">
+                    <field name="project_phase_id" domain="[('project_id', '=', project_id)]"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="project_task_search_view" model="ir.ui.view">
+            <field name="name">project.task.searchview</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_search_form"/>
+            <field name="arch" type="xml">
+                <xpath expr = "//search" position="inside">
+                    <field name="project_phase_id"/>
+                    <filter name="Project Phase" context="{'group_by':'project_phase_id'}"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
